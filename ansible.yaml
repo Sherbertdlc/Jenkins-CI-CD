@@ -2,24 +2,24 @@
 - name: Deploy Docker container from GitHub image
   hosts: localhost
   vars:
-    github_repository: "username/repository"  # GitHub repository containing the Dockerfile
-    docker_image_name: "docker-image"        # Name of the Docker image
-    docker_container_name: "docker-container"  # Name of the Docker container
-    docker_port_mapping: "9000:80"           # Port mapping (host_port:container_port)
+    github_repository: "https://github.com/Sherbertdlc/Jenkins-CI-CD.git"  # GitHub repository containing the Dockerfile
+    docker_image_name: "sherbertdlc/myflaskapp:latest"        # Name of the Docker image
+    docker_container_name: "charming_dijkstra"  # Name of the Docker container
+    docker_port_mapping: "5000:5000"           # Port mapping (host_port:container_port)
 
   tasks:
     - name: Clone GitHub repository and build Docker image
       git:
-        repo: "https://github.com/{{ github_repository }}"
-        dest: "/tmp/{{ github_repository }}"
-        version: "master"
+        repo: "https://github.com/Sherbertdlc/Jenkins-CI-CD.git"
+        dest: "/tmp/jenkins-CI-CD.git"
+        version: "main"
       changed_when: false
       register: git_clone_result
 
     - name: Run Docker container
       docker_container:
-        name: "{{ docker_container_name }}"
-        image: "{{ docker_image_name }}"
+        name: "sherbertdlc/myflaskapp:latest"
+        image: "sherbertdlc/myflaskapp:latest"
         state: reloaded
         restart_policy: always
-        ports: "{{ docker_port_mapping }}"
+        ports: "5000:5000"
