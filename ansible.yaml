@@ -4,7 +4,7 @@
   vars:
     github_repository: "https://github.com/Sherbertdlc/Jenkins-CI-CD.git"  # GitHub repository containing the Dockerfile
     docker_image_name: "sherbertdlc/myflaskapp:latest"        # Name of the Docker image
-    docker_container_name: "cshaidockerapp"  # Name of the Docker container
+    docker_container_name: "shai-docker-app"  # Name of the Docker container
     docker_port_mapping: "5000:5000"           # Port mapping (host_port:container_port)
 
   tasks:
