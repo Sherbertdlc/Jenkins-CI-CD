@@ -18,7 +18,7 @@
 
     - name: Run Docker container
       docker_container:
-        name: "sherbertdlc/myflaskapp:latest"
+        name: "myflaskapp:latest"
         image: "sherbertdlc/myflaskapp:latest"
         state: reloaded
         restart_policy: always
